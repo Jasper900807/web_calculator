@@ -1,0 +1,23 @@
+.homepageIcon {
+    justify-content: space-around;
+    background-color: lightblue;
+    border: 2px solid black;
+    /* border-radius: 25px; */
+}
+
+.iconContainer {
+    text-align: center;
+}
+
+.iconContainer div {
+    justify-content: space-around;
+}
+
+.iconContainer a {
+    text-decoration: none;
+    color: black;
+}
+
+.iconContainer a:hover {
+    background-color: gray;
+}

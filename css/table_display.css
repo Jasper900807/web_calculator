@@ -1,0 +1,35 @@
+table.buttons th {
+    border: 3px solid black;
+
+    font-size:xx-large;
+    font-style:inherit;
+    width: 64px;
+    height: 80px;
+
+text-align: center;
+}
+
+table.buttons button {
+    border: 0;
+}
+
+table.buttons th:hover,
+    table.buttons th.hover-effect {
+        background-color: #d0e0ff;
+        transition: background-color 0.2s ease;
+}
+
+.outputDisplay {
+    font-size: clamp(16px, 5vw, 40px);
+}
+
+.outputDisplay div {
+    border: 3px solid black;  
+    text-align: center;
+}
+
+.outputDisplay input {
+    height: 100%; width: 100%;
+    text-align: right;
+}
+

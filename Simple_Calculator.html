@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <!-- 引用CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/table_display.css" rel="stylesheet">
+  
+  
+</head>
+<body>
+    <!-- 網頁列表 -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./Home_page.html">Calculator</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link" href="./Simple_Calculator.html">Simple calculate</a>
+                    </li>
+                    <!-- Dropdown -->
+                     <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Another Calculate
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Calculas</a></li>
+                        <li><a class="dropdown-item" href="#">Vector</a></li>
+                        <li><a class="dropdown-item" href="./Matrix_Calculator.html">Matrix</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">More...</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <!-- dark mode switch -->
+                    <li class="nav-item form-check form-switch d-flex align-items-center">
+                        <input class="form-check-input ms-auto" type="checkbox" id="themeToggle">
+                        <label class="form-check-label" for="themeToggle">Dark Mode</label>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+        
+    </div>
+
+    <h1 style="text-align: center; font-style: inherit; padding-top: 10px;">計算機</h1>
+    <div class="container" style="margin-top: 50px;">
+        <!-- 計算機 -->
+        <div class="row" style="justify-content: space-around;">
+            <!-- 按鈕table -->
+            <div class="col-4">
+                <table class="buttons justify-content-center">
+                    <tr>
+                        <th id="key-7" onclick="append('7')">7</th>
+                        <th id="key-8" onclick="append('8')">8</th>
+                        <th id="key-9" onclick="append('9')">9</th>
+                        <th id="key-divide" onclick="append('/')">/</th>
+                        <th id="key-backSpace" onclick="backSpace()">⌫</th>
+                    </tr>
+                    <tr>
+                        <th id="key-4" onclick="append('4')">4</th>
+                        <th id="key-5" onclick="append('5')">5</th>
+                        <th id="key-6" onclick="append('6')">6</th>
+                        <th id="key-multiply" onclick="append('*')">*</th>
+                        <th id="key-Escape" onclick="clearDisplay()">C</th>
+                    </tr>
+                    <tr>
+                        <th id="key-1" onclick="append('1')">1</th>
+                        <th id="key-2" onclick="append('2')">2</th>
+                        <th id="key-3" onclick="append('3')">3</th>
+                        <th id="key-minus" onclick="append('-')">-</th>
+                        <th id="key-power" onclick="append('**')">^</th>
+                    </tr>
+                    <tr>
+                        <th id="key-0" onclick="append('0')">0</th>
+                        <th id="key-dot" onclick="append('.')">.</th>
+                        <th></th>
+                        <th id="key-plus" onclick="append('+')">+</th>
+                        <th id="key-enter" onclick="calculate()">=</th>
+                    </tr>
+                </table>
+            </div>
+            <!-- 輸出視窗 -->
+            <div class="outputDisplay col-6 d-flex flex-column">
+                <div class="flex-fill" >
+                    <input class="" type="text" id="display" placeholder="Enter..." readonly>
+                </div>
+                <div class="flex-fill" style="border-top: 0;">
+                    <input class="" type="text" id="result" placeholder="Answer" readonly>
+                </div>
+            </div>
+
+    </div>
+
+
+    <!-- 引用JS -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
+    <script src="./js/toolbox.js"></script>
+    <script src="./js/keyboard_tool.js"></script>
+    <script src="./js/darrkmode.js"></script>
+
+    <script>
+        // 動態縮校字體(未完成)
+        function adjustFontSize() {
+
+        }  
+    </script>
+</body>
+</html>
