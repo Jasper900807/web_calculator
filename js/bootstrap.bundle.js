@@ -2405,7 +2405,7 @@
     // it's not an issue. I don't think anyone ever specifies width on <html>
     // anyway.
     // Browsers where the left scrollbar doesn't cause an issue report `0` for
-    // this (e.g. Edge 2019, IE11, Safari)
+    // this (e.g. Edge 2024, IE11, Safari)
     return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
   }
 
