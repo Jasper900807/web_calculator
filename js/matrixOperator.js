@@ -34,7 +34,7 @@ table += "</table>";
 container.innerHTML = table;
 
 // 清空輸出
-document.getElementById("matrix-output").innerHTML = "";
+// document.getElementById("matrix-output").innerHTML = "";
 }
 
 // 顯示矩陣
@@ -79,8 +79,8 @@ function displayMatrix(matrix, op){
     }
     resultHtml += `</mtable><mo>)</mo>`;
 
-    resultHtml += `</math>`
-    document.getElementById("matrix-output").innerHTML = resultHtml;
+    resultHtml += `</math><hr>`
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
 
 // 獲取矩陣數據
@@ -175,7 +175,6 @@ function multiplyMatrices() {
     const matrixB = getMatrix('B');
 
     if (matrixA[0].length !== matrixB.length) {
-        // console.log(matrixA.length[0], )matrixB.le
         alert("矩陣維度不匹配，無法相乘！");
         return;
     }
@@ -184,3 +183,80 @@ function multiplyMatrices() {
     displayMatrix(result, "×")
 }
 
+function multiplySelf(ID) {
+    // 獲取矩陣A和B
+    const matrix = getMatrix(ID);
+    const value = document.getElementById(`multiplyValue${ID}`).value;
+
+    const result = math.multiply(value, matrix);
+
+
+    //將結果輸出
+    let resultHtml = `<math>`
+    // 原矩陣
+    resultHtml += `<mrow><mo>${value}×</mo><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+    resultHtml += `<mo>=</mo>`
+    // 結果矩陣
+    resultHtml += `<mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<result.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<result[i].length; j++) {
+            resultHtml += `<mtd>${result[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+    resultHtml += `</math><hr>`
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+
+function powMatrix(ID) {
+    const matrix = getMatrix(ID);
+    const value = document.getElementById(`powValue${ID}`).value;
+
+    if (matrix.length !== matrix[0].length) {
+        alert("矩陣不是方陣，無法進行幂法！");
+        return;
+    }
+
+    const result = math.pow(matrix, value);
+
+    //將結果輸出
+    let resultHtml = `<math>`
+    // 原矩陣
+    resultHtml += `<msup><mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow><mn>${value}</mn></msup>`;
+
+    resultHtml += `<mo>=</mo>`
+    // 結果矩陣
+    resultHtml += `<mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<result.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<result[i].length; j++) {
+            resultHtml += `<mtd>${result[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+    resultHtml += `</math><hr>`
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}

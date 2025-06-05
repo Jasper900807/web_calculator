@@ -7,48 +7,10 @@
   <!-- 引用CSS -->
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/table_display.css" rel="stylesheet">
+  <link href="./css/matrix_calculator_style.css" rel="stylesheet">
   
 
-  <style>
-    .matrix-input {
-        width: 3.5em;
-    }
-
-    /* 關掉input number的上下鍵 */
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    .matrixContainer {
-        margin-top: 10px;
-        /* display: flex;
-        justify-content: center; */
-    }
-
-    .rows-cols-control {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .midOperator {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .operatorButton {
-        width: 3em;
-        margin-top: 0.2em;
-        text-align: center;
-    }
-  </style>
-  
+ 
 </head>
 <body>
     <!-- 網頁列表 -->
@@ -128,6 +90,22 @@
                         </tr>
                     </table>
                 </div>
+                <!-- 下方按鈕 -->
+                <div class="botButton">
+                    <button onclick="">行列式</button>
+                    <button onclick="">逆矩陣</button>
+                    <button onclick="">轉置矩陣</button>
+                    <div class="op-group">
+                        <button onclick="multiplySelf('A')">乘法</button>
+                        <input type="number" id="multiplyValueA" value="2">
+                    </div>
+                    <div class="op-group">
+                        <button onclick="powMatrix('A')">冪法</button>
+                        <input type="number" id="powValueA" value="2">
+                    </div>
+                    <button onclick="">轉置矩陣</button>
+                    <button onclick="">轉置矩陣</button>
+                </div>
             </div>
             <div class="midOperator col">
                 <button onclick="swapMatrices()" class="operatorButton">A⇆B</button>
@@ -162,10 +140,18 @@
                         </tr>
                     </table>
                 </div>
+                
             </div>
         </div>
         <hr>
-            <div id="matrix-output">output</div>
+            <div class="d-flex">
+                <span>紀錄：</span>
+                <button onclick="document.getElementById('matrix-output').innerHTML = ''" class="ms-auto">清除紀錄</button>
+            </div>
+            <hr>
+            <div id="matrix-output">
+                
+            </div>
     </div>
 
 
