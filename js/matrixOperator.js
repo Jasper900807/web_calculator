@@ -38,8 +38,38 @@ document.getElementById("matrix-output").innerHTML = "";
 }
 
 // 顯示矩陣
-function displayMatrix(matrix, title="result"){
-    let resultHtml = `<h3>${title}</h3><math><mo>(</mo><mtable class='matrix-table'>`;
+function displayMatrix(matrix, op){
+    let resultHtml = `<math>`;
+
+    // 獲取矩陣A和B
+    const matrixA = getMatrix('A');
+    const matrixB = getMatrix('B');
+
+    resultHtml += `<mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrixA.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrixA[i].length; j++) {
+            resultHtml += `<mtd>${matrixA[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo>`;
+
+    resultHtml += `<mo>${op}</mo>`
+    
+    resultHtml += `<mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrixB.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrixB[i].length; j++) {
+            resultHtml += `<mtd>${matrixB[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo>`;
+
+    resultHtml += `<mo>=</mo>`
+
+    resultHtml += `<mo>(</mo><mtable class='matrix-table'>`
     for (let i=0; i<matrix.length; i++) {
         resultHtml += "<mtr>";
         for (let j=0; j<matrix[i].length; j++) {
@@ -47,7 +77,9 @@ function displayMatrix(matrix, title="result"){
         }
         resultHtml += "</mtr>";
     }
-    resultHtml += "</mtable><mo>)</mo></math>";
+    resultHtml += `</mtable><mo>)</mo>`;
+
+    resultHtml += `</math>`
     document.getElementById("matrix-output").innerHTML = resultHtml;
 }
 
@@ -118,7 +150,7 @@ function addMatrice() {
     }
 
     const result = math.add(matrixA, matrixB);
-    displayMatrix(result, "A + B");
+    displayMatrix(result, "+");
 }
 
 // A和B矩陣相減
@@ -133,7 +165,7 @@ function subtractMatrices() {
     }
 
     const result = math.subtract(matrixA, matrixB);
-    displayMatrix(result, "A - B");
+    displayMatrix(result, "-");
 }
 
 // A和B矩陣相乘
@@ -149,6 +181,6 @@ function multiplyMatrices() {
     }
 
     const result = math.multiply(matrixA, matrixB);
-    displayMatrix(result, "A*B")
+    displayMatrix(result, "×")
 }
 
