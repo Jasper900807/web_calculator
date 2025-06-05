@@ -63,6 +63,7 @@
     <div class="container" style="margin-top: 50px;">
         <!-- 矩陣計算機 -->
         <div class="row d-flex justify-content-center">
+            <!-- 矩陣A行列數控制 -->
             <div class="rows-cols-control col">
                 <div class="" style="width: 280px; text-align: center;">
                     <label>行數：<input type="number" id="rows-A" value="3" min="1" style="width: 2em;" /></label>
@@ -70,7 +71,7 @@
                     >>
                     <button onclick="createMatrix(`matrixContainerA`, `A`)">創建矩陣</button>
                 </div>
-                
+                <!-- 矩陣A輸入位置 -->
                 <div class="matrixContainer" id="matrixContainerA">
                     <table class="matrix-table">
                         <tr>
@@ -92,9 +93,9 @@
                 </div>
                 <!-- 下方按鈕 -->
                 <div class="botButton">
-                    <button onclick="">行列式</button>
-                    <button onclick="">逆矩陣</button>
-                    <button onclick="">轉置矩陣</button>
+                    <button onclick="detMatrix('A')">行列式</button>
+                    <button onclick="invMatrix('A')">逆矩陣</button>
+                    <button onclick="transposeMatrix('A')">轉置矩陣</button>
                     <div class="op-group">
                         <button onclick="multiplySelf('A')">乘法</button>
                         <input type="number" id="multiplyValueA" value="2">
@@ -107,12 +108,14 @@
                     <button onclick="">轉置矩陣</button>
                 </div>
             </div>
+            <!-- 中間運算按鈕 -->
             <div class="midOperator col">
                 <button onclick="swapMatrices()" class="operatorButton">A⇆B</button>
                 <button onclick="addMatrice()" class="operatorButton">A+B</button>
                 <button onclick="subtractMatrices()" class="operatorButton">A-B</button>
                 <button onclick="multiplyMatrices()" class="operatorButton">A*B</button>
             </div>
+            <!-- 矩陣B行列數控制 -->
             <div class="rows-cols-control col">
                 <div class="" style="width: 280px; text-align: center;">
                     <label>行數：<input type="number" id="rows-B" value="3" min="1" style="width: 2em;" /></label>
@@ -120,7 +123,7 @@
                     >>
                     <button onclick="createMatrix(`matrixContainerB`, `B`)">創建矩陣</button>
                 </div>
-                
+                <!-- 矩陣B輸入位置 -->
                 <div class="matrixContainer" id="matrixContainerB">
                     <table class="matrix-table">
                         <tr>
@@ -149,17 +152,17 @@
                 <button onclick="document.getElementById('matrix-output').innerHTML = ''" class="ms-auto">清除紀錄</button>
             </div>
             <hr>
-            <div id="matrix-output">
-                
-            </div>
+            <!-- 結果輸出 -->
+            <div id="matrix-output"></div>
     </div>
 
 
     <!-- 引用JS -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
     <script src="./js/darrkmode.js"></script>
     <script src="./js/matrixOperator.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
 
     <script>
 

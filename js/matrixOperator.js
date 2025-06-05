@@ -183,6 +183,102 @@ function multiplyMatrices() {
     displayMatrix(result, "×")
 }
 
+// 行列式
+function detMatrix(ID) {
+    const matrix = getMatrix(ID);
+    const result = math.det(matrix);
+    let resultHtml = `<math>`
+
+    resultHtml += `<mrow><mo>|</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>|</mo></mrow>`;
+
+    resultHtml += `<mo>=</mo>`
+    resultHtml += `<mtext>${result}</mtext><hr>`
+
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+// 逆矩陣
+function invMatrix(ID) {
+    const matrix = getMatrix(ID);
+    if (math.det(matrix) == 0){
+        alert("行列式為零，不存在逆矩陣！")
+        return;
+    }
+
+    const result = math.inv(matrix);
+
+    let resultHtml = `<math>`
+    // 原矩陣
+    resultHtml += `<msup><mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow><mn>-1</mn></msup>`;
+
+    resultHtml += `<mo>=</mo>`
+    // 結果矩陣
+    resultHtml += `<mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<result.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<result[i].length; j++) {
+            resultHtml += `<mtd>${result[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+    resultHtml += `</math><hr>`
+
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+// 轉置矩陣
+function transposeMatrix(ID) {
+    const matrix = getMatrix(ID);
+    const result = math.transpose(matrix);
+
+    let resultHtml = `<math>`
+    // 原矩陣
+    resultHtml += `<msup><mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow><mn>T</mn></msup>`;
+
+    resultHtml += `<mo>=</mo>`
+    // 結果矩陣
+    resultHtml += `<mrow><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<result.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<result[i].length; j++) {
+            resultHtml += `<mtd>${result[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+    resultHtml += `</math><hr>`
+
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+// 乘自己
 function multiplySelf(ID) {
     // 獲取矩陣A和B
     const matrix = getMatrix(ID);
@@ -220,7 +316,7 @@ function multiplySelf(ID) {
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
 
-
+// 幂法(power)
 function powMatrix(ID) {
     const matrix = getMatrix(ID);
     const value = document.getElementById(`powValue${ID}`).value;
