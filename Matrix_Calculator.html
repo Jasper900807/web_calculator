@@ -32,11 +32,9 @@
                         Another Calculate
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Calculas</a></li>
-                        <li><a class="dropdown-item" href="#">Vector</a></li>
-                        <li><a class="dropdown-item" href="#">Matrix</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">More...</a></li>
+                        <li><a class="dropdown-item" href="./Calculas_Calculator.html">Calculas</a></li>
+                        <li><a class="dropdown-item" href="./Matrix_Calculator.html">Matrix</a></li>
+                        <li><a class="dropdown-item" href="./Static_Calculator.html">Static</a></li>
                     </ul>
                     </li>
 
@@ -65,6 +63,7 @@
         <div class="row d-flex justify-content-center">
             <!-- 矩陣A行列數控制 -->
             <div class="rows-cols-control col">
+                <h3>矩陣A</h3>
                 <div class="" style="width: 280px; text-align: center;">
                     <label>行數：<input type="number" id="rows-A" value="3" min="1" style="width: 2em;" /></label>
                     <label>列數：<input type="number" id="cols-A" value="3" min="1" style="width: 2em;" /></label>
@@ -104,8 +103,8 @@
                         <button onclick="powMatrix('A')">冪法</button>
                         <input type="number" id="powValueA" value="2">
                     </div>
-                    <button onclick="">轉置矩陣</button>
-                    <button onclick="">轉置矩陣</button>
+                    <!-- <button onclick="eigenMatrix('A')">特徵值與向量</button> -->
+                    <!-- <button onclick="">轉置矩陣</button> -->
                 </div>
             </div>
             <!-- 中間運算按鈕 -->
@@ -117,6 +116,7 @@
             </div>
             <!-- 矩陣B行列數控制 -->
             <div class="rows-cols-control col">
+                <h3>矩陣B</h3>
                 <div class="" style="width: 280px; text-align: center;">
                     <label>行數：<input type="number" id="rows-B" value="3" min="1" style="width: 2em;" /></label>
                     <label>列數：<input type="number" id="cols-B" value="3" min="1" style="width: 2em;" /></label>
@@ -163,6 +163,7 @@
     <script src="./js/matrixOperator.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
 
     <script>
 

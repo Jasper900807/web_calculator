@@ -1,44 +1,47 @@
 // 創建矩陣，同時盡量保留之前輸出的資料
 function createMatrix(matrixContainer, ID) {
-// 先讀出舊尺寸
-let oldRows = parseInt(document.getElementById(`rows-${ID}`).value);
-let oldCols = parseInt(document.getElementById(`cols-${ID}`).value);
+    console.log("create", matrixContainer, ID);
+    // 先讀出舊尺寸
+    let oldRows = parseInt(document.getElementById(`rows-${ID}`).value);
+    let oldCols = parseInt(document.getElementById(`cols-${ID}`).value);
 
-// 儲存舊資料
-let oldData = [];
-for (let i = 0; i < oldRows; i++) {
-    let row = [];
-    for (let j = 0; j < oldCols; j++) {
-        const cell = document.getElementById(`cell${ID}-${i}-${j}`);
-        row.push(cell ? parseFloat(cell.value) || 0 : 0);
+    // 儲存舊資料
+    let oldData = [];
+    for (let i = 0; i < oldRows; i++) {
+        let row = [];
+        for (let j = 0; j < oldCols; j++) {
+            const cell = document.getElementById(`cell${ID}-${i}-${j}`);
+            row.push(cell ? parseFloat(cell.value) || 0 : 0);
+        }
+        oldData.push(row);
     }
-    oldData.push(row);
-}
 
-// 取得新尺寸
-const rows = parseInt(document.getElementById(`rows-${ID}`).value);
-const cols = parseInt(document.getElementById(`cols-${ID}`).value);
-const container = document.getElementById(matrixContainer);
 
-// 建立新矩陣
-let table = "<table class='matrix-table'>";
-for (let i = 0; i < rows; i++) {
-    table += "<tr>";
-    for (let j = 0; j < cols; j++) {
-        let value = (oldData[i] && oldData[i][j] !== undefined) ? oldData[i][j] : 0;
-        table += `<td><input type="number" class="matrix-input" id="cell${ID}-${i}-${j}" value="${value}"/></td>`;
+    // 取得新尺寸
+    const rows = parseInt(document.getElementById(`rows-${ID}`).value);
+    const cols = parseInt(document.getElementById(`cols-${ID}`).value);
+    const container = document.getElementById(matrixContainer);
+
+
+    // 建立新矩陣
+    let table = "<table class='matrix-table'>";
+    for (let i = 0; i < rows; i++) {
+        table += "<tr>";
+        for (let j = 0; j < cols; j++) {
+            let value = (oldData[i] && oldData[i][j] !== undefined) ? oldData[i][j] : 0;
+            table += `<td><input type="number" class="matrix-input" id="cell${ID}-${i}-${j}" value="${value}"/></td>`;
+        }
+        table += "</tr>";
     }
-    table += "</tr>";
-}
-table += "</table>";
-container.innerHTML = table;
+    table += "</table>";
+    container.innerHTML = table;
 
-// 清空輸出
-// document.getElementById("matrix-output").innerHTML = "";
+    // 清空輸出
+    // document.getElementById("matrix-output").innerHTML = "";
 }
 
 // 顯示矩陣
-function displayMatrix(matrix, op){
+function displayMatrix(result, op){
     let resultHtml = `<math>`;
 
     // 獲取矩陣A和B
@@ -70,17 +73,47 @@ function displayMatrix(matrix, op){
     resultHtml += `<mo>=</mo>`
 
     resultHtml += `<mo>(</mo><mtable class='matrix-table'>`
-    for (let i=0; i<matrix.length; i++) {
+    for (let i=0; i<result.length; i++) {
         resultHtml += "<mtr>";
-        for (let j=0; j<matrix[i].length; j++) {
-            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        for (let j=0; j<result[i].length; j++) {
+            resultHtml += `<mtd>${result[i][j]}</mtd>`;
         }
         resultHtml += "</mtr>";
     }
     resultHtml += `</mtable><mo>)</mo>`;
+    resultHtml += `</math>`
 
-    resultHtml += `</math><hr>`
+    resultHtml += insertButton(result); 
+    resultHtml += `<hr>`;
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+// 新增匯入按鈕
+function insertButton(result) {
+    let newHtml = ` <span>
+                        <button onclick='insertMatrix(${JSON.stringify(result)}, "A")' class="resultButton ms-auto">匯入到A</button>
+                        <button onclick='insertMatrix(${JSON.stringify(result)}, "B")' class="resultButton ms-auto">匯入到B</button>
+                    </span>`;
+    return newHtml;
+}
+
+// 匯入矩陣
+function insertMatrix(matrix, ID) {
+    console.log("start", matrix, ID);
+    createMatrix(`matrixContainer${ID}`, ID);
+    document.getElementById(`rows-${ID}`).value = matrix.length;
+    document.getElementById(`cols-${ID}`).value = matrix[0].length;
+
+    let table = "<table class='matrix-table'>";
+    for (let i = 0; i < matrix.length; i++) {
+        table += "<tr>";
+        for (let j = 0; j < matrix[i].length; j++) {
+            table += `<td><input type="number" class="matrix-input" id="cell${ID}-${i}-${j}" value="${matrix[i][j]}" /></td>`;
+        }
+        table += "</tr>";
+    }
+    table += "</table>";
+    document.getElementById(`matrixContainer${ID}`).innerHTML = table;
 }
 
 // 獲取矩陣數據
@@ -239,7 +272,10 @@ function invMatrix(ID) {
     }
     resultHtml += `</mtable><mo>)</mo></mrow>`;
 
-    resultHtml += `</math><hr>`
+    resultHtml += `</math>`
+
+    resultHtml += insertButton(result);
+    resultHtml +=`<hr>`
 
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
@@ -273,7 +309,10 @@ function transposeMatrix(ID) {
     }
     resultHtml += `</mtable><mo>)</mo></mrow>`;
 
-    resultHtml += `</math><hr>`
+    resultHtml += `</math>`
+
+    resultHtml += insertButton(result);
+    resultHtml +=`<hr>`
 
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
@@ -312,7 +351,10 @@ function multiplySelf(ID) {
     }
     resultHtml += `</mtable><mo>)</mo></mrow>`;
 
-    resultHtml += `</math><hr>`
+    resultHtml += `</math>`
+
+    resultHtml += insertButton(result);
+    resultHtml +=`<hr>`
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
 
@@ -353,6 +395,47 @@ function powMatrix(ID) {
     }
     resultHtml += `</mtable><mo>)</mo></mrow>`;
 
-    resultHtml += `</math><hr>`
+    resultHtml += `</math>`
+
+    resultHtml += insertButton(result);
+    resultHtml +=`<hr>`
     document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
 }
+
+// 取得特徵值&特徵向量 *施工中
+function eigenMatrix(ID) {
+    const matrix = getMatrix(ID);
+    const eigen = numeric.eig(matrix)
+
+    console.log(eigen.lambda.x)
+    console.log(eigen.E.x)
+
+    let resultHtml = `<math>`
+    // 原矩陣
+    resultHtml += `<mrow><mi>${ID}</mi><mo>=</mo><mo>(</mo><mtable class='matrix-table'>`
+    for (let i=0; i<matrix.length; i++) {
+        resultHtml += "<mtr>";
+        for (let j=0; j<matrix[i].length; j++) {
+            resultHtml += `<mtd>${matrix[i][j]}</mtd>`;
+        }
+        resultHtml += "</mtr>";
+    }
+    resultHtml += `</mtable><mo>)</mo></mrow>`;
+
+
+
+    resultHtml += `</math><hr>`
+
+    document.getElementById("matrix-output").innerHTML = resultHtml + document.getElementById("matrix-output").innerHTML;
+}
+
+// LU分解 *施工中
+function luDecomposition(ID) {
+    const matrix = getMatrix(ID);
+    const len = matrix.length;
+
+}
+
+// 對角矩陣 *施工中
+
+
