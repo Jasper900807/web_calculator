@@ -90,9 +90,9 @@ function displayMatrix(result, op){
 
 // 新增匯入按鈕
 function insertButton(result) {
-    let newHtml = ` <span>
-                        <button onclick='insertMatrix(${JSON.stringify(result)}, "A")' class="resultButton ms-auto">匯入到A</button>
-                        <button onclick='insertMatrix(${JSON.stringify(result)}, "B")' class="resultButton ms-auto">匯入到B</button>
+    let newHtml = ` <span class="d-flex justify-content-end">
+                        <button onclick='insertMatrix(${JSON.stringify(result)}, "A")' class="resultButton">匯入到A</button>
+                        <button onclick='insertMatrix(${JSON.stringify(result)}, "B")' class="resultButton">匯入到B</button>
                     </span>`;
     return newHtml;
 }
