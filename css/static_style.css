@@ -1,0 +1,49 @@
+.inputArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+}
+
+.calculateButtonBox  {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+#calculateButton {
+    font-size: x-large;
+}
+
+#resultBox {
+    border: 2px solid black;
+    padding: 8px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.chart .row {
+  display: flex;
+  gap: 10px; /* 間距 */
+}
+
+.chart-container {
+  flex: 1; 
+  max-width: 48%;
+}
+
+.chart-container.full-width {
+  flex: 0 0 100%; /* 固定100%寬 */
+  max-width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}

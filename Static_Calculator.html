@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Calculator</title>
-  <!-- 引用CSS -->
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link href="./css/table_display.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Calculator</title>
+    <!-- 引用JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
+    <script src="./js/static_toolbox.js"></script>
+    <!-- 引用CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/static_style.css" rel="stylesheet">
  
 </head>
 <body>
@@ -54,19 +59,65 @@
         
     </div>
 
-    <h1 style="text-align: center; font-style: inherit; padding-top: 10px;">矩陣計算機</h1>
+    <h1 style="text-align: center; font-style: inherit; padding-top: 10px;">統計計算機</h1>
     
     
+    <div class="container">
+        <span class="inputArea">
+            <textarea id="dataInputX" placeholder="請輸入資料X，例如：3, 5, 8, 10, 5"></textarea>
+            <textarea id="dataInputY" placeholder="請輸入資料Y，例如：1, 14, 5, 1, 4"></textarea>
+        </span>
+        <br>
+        <span class="calculateButtonBox">
+            <button onclick="calculate('X')" id="calculateButton">計算X</button>
+            <button onclick="calculate('Y')" id="calculateButton">計算Y</button>
+        </span>
+    
+        <div class="row">
+            <div class="col result" id="resultBox">
+                <p>資料數量：<span id="countX"></span></p>
+                <p>資料總和：<span id="sumX"></span></p>
+                <p>平均值：<span id="meanX"></span></p>
+                <p>最大值：<span id="maxX"></span></p>
+                <p>最小值：<span id="minX"></span></p>
+                <p>中位數：<span  id="medianX"></span></p>
+                <p>眾數：<span id="modeX"></span></p>
+                <p>變異數：<span id="varianceX"></span></p>
+                <p>標準差：<span id="stdDevX"></span></p>
+            </div>
+            <div class="col result" id="resultBox">
+                <p>資料數量：<span id="countY"></span></p>
+                <p>資料總和：<span id="sumY"></span></p>
+                <p>平均值：<span id="meanY"></span></p>
+                <p>最大值：<span id="maxY"></span></p>
+                <p>最小值：<span id="minY"></span></p>
+                <p>中位數：<span  id="medianY"></span></p>
+                <p>眾數：<span id="modeY"></span></p>
+                <p>變異數：<span id="varianceY"></span></p>
+                <p>標準差：<span id="stdDevY"></span></p>
+            </div>
+        </div>
+        <p style="text-align: end; font-size: 16px;">(所有資料皆取小數點到第二位)</p>
+    
+        <div class="charts">
+            <h2 class="toggle-chart">► 折線圖</h2>
+            <div class="row hidden">
+                <canvas id="lineChart"></canvas>
+            </div>
 
+            <h2 class="toggle-chart">► 直方圖</h2>
+            <div class="row hidden">
+                <div class="chart-container">
+                    <canvas id="histogramChartX"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="histogramChartY"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 引用JS -->
-    <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/darrkmode.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.4.0/math.min.js"></script>
-    
-
-    <script>
-
-    </script>
 </body>
 </html>
