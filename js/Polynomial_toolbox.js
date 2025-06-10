@@ -1,18 +1,16 @@
-function beautifySqrt(expr) {
-    return expr.replace(/(\d+)\^\(1\/2\)/g, '√$1');
-}
-
+// 簡化得到的根
 function combineSqrtProducts(expr) {
+    // 找到兩個根號相乘的情況，將它們的數值相乘並合併為一個根號
     return expr.replace(/(\d+)\^\(1\/2\)\*(\d+)\^\(1\/2\)/g, (_, a, b) => {
         return `${parseInt(a) * parseInt(b)}^(1/2)`;
     });
 }
 
-function beautifyToLatex(expr) {
+// 將包含 √、乘號、次方等的表達式轉換為 LaTeX 格式，供 MathJax 顯示用
+function toLatex(expr) {
     return expr
-        .replace(/√(\d+)/g, '\\sqrt{$1}')
-        .replace(/(\d+)\^\(1\/2\)/g, '\\sqrt{$1}')
-        .replace(/([a-zA-Z0-9])\*/g, '$1 \\cdot ')
+        .replace(/(\d+)\^\(1\/2\)/g, '\\sqrt{$1}')      // 5^(1/2) → \sqrt{5}
+        .replace(/([a-zA-Z0-9\)\]])\^([a-zA-Z0-9\+\-\*/\(\)]+)/g, '$1^{ $2 }')
         .replace(/\*\s*([a-zA-Z0-9])/g, ' \\cdot $1');
 }
 
@@ -68,8 +66,7 @@ function solve() {
                     })
                     .map(expr => {
                         const simplified = Algebrite.simplify(expr).toString();
-                        const beautified = beautifySqrt(combineSqrtProducts(simplified));
-                        const latex = beautifyToLatex(beautified);
+                        const latex = toLatex(combineSqrtProducts(simplified));
                         return `\\(${latex}\\)`;
                     });
 
