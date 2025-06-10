@@ -1,0 +1,18 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+}
+.card {
+    border-radius: 1rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.card-body i {
+    transition: transform 0.3s;
+}
+.card:hover i {
+    transform: rotate(10deg) scale(1.2);
+}
