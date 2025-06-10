@@ -60,3 +60,18 @@ function solve() {
         }
     }, 100);
 }
+
+
+document.addEventListener('keydown', function (event){
+    const key = event.key;
+    
+    if (key === 'Escape') {
+        document.getElementById('result').innerHTML = ''
+        document.getElementById('polyInput').value = ''
+
+    }
+    
+    if (key === 'Enter') {
+        solve();
+    }
+});
