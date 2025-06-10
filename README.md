@@ -1,10 +1,10 @@
-# Mid Project - 多功能線上計算機
+# Mid Project - 多功能網頁計算機
 
 本專案為一個整合多種功能的前端線上計算機，使用者可以透過瀏覽器進行以下運算：
 - 簡易計算（加減乘除）
 - 矩陣計算
 - 多項式計算
-- 靜態數學公式展示
+- 統計資料分析與圖表展示
 
 ## 📁 專案結構
 
@@ -16,11 +16,8 @@ mid_project/
 ├── Polynomial_Calculator.html   # 多項式計算機
 ├── Static_Calculator.html       # 靜態展示頁
 ├── css/
-│   ├── Homepage_style.css
-│   ├── Matrix_style.css
-│   ├── Polynomial_style.css
-│   ├── Simple_style.css
-│   └── bootstrap-grid.css
+├── js/
+├── README.md
 ```
 
 ## 🛠️ 技術棧
@@ -28,6 +25,10 @@ mid_project/
 - HTML5
 - CSS3
 - Bootstrap（部分版型支援）
+- Mathjs
+- MathML
+- Algebrite
+- Chart
 
 ## 🚀 使用說明
 
@@ -42,12 +43,8 @@ mid_project/
 
 ## 🔢 功能介紹
 
-- **首頁導覽**：進入不同類型的計算器
+- **首頁導覽**：進入不同類型的計算機
 - **簡易計算機**：支援基本四則運算
-- **矩陣計算機**：支援矩陣輸入與基本運算（尚需 JavaScript 完成運算邏輯）
+- **矩陣計算機**：支援矩陣輸入與基本運算
 - **多項式計算機**：展示多項式處理介面
-- **靜態頁面**：顯示靜態數學公式與圖示
-
-## 📄 授權
-
-本專案採用 MIT License。歡迎自由使用、修改與再發布。
+- **統計計算機**：顯示數據資料與圖示
