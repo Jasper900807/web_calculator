@@ -28,6 +28,7 @@ mid_project/
 - Mathjs
 - MathML
 - Algebrite
+- Chart
 
 ## 🚀 使用說明
 
