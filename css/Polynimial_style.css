@@ -1,0 +1,10 @@
+.inputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#rootsOutput {
+    max-width: 100%;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
