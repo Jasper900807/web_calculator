@@ -14,7 +14,7 @@ mid_project/
 ├── Simple_Calculator.html       # 簡易計算機
 ├── Matrix_Calculator.html       # 矩陣計算機
 ├── Polynomial_Calculator.html   # 多項式計算機
-├── Static_Calculator.html       # 靜態展示頁
+├── Static_Calculator.html       # 統計計算機
 ├── css/
 ├── js/
 ├── README.md
