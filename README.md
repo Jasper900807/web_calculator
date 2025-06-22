@@ -17,7 +17,6 @@ mid_project/
 ├── Static_Calculator.html       # 統計計算機
 ├── css/
 ├── js/
-├── README.md
 └── README.md
 ```
 
